@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+  namespace: prerna
+  labels:
+    app: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+      type: backend
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        type: backend
+    spec:
+      containers:
+      - name: hello-world
+        image: prerna1306/prerna:1.0.1
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: dockercred
+

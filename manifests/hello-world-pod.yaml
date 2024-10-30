@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+  namespace: prerna
+  labels:
+    app: hello-world
+    type: backend
+spec:
+  containers:
+    - name: hello-world
+      image: prerna1306/prerna:1.0.1
+      ports:
+        - containerPort: 8080
+      imagePullPolicy: Always
+  imagePullSecrets:
+    - name: dockercred
